@@ -210,6 +210,9 @@ if handles.filename
     handles.FILE_OPENED = true;
     % Changing my GUI accordingly
     set(handles.playButton,'Enable','on');
+    set(handles.pauseButton,'Enable','off');
+    set(handles.resumeButton,'Enable','off');
+    set(handles.stopButton,'Enable','off');
 end
 
 % audioread function reads the audio file and passes its signal to
