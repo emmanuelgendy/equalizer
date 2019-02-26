@@ -55,6 +55,11 @@ function untitled_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for untitled
 handles.output = hObject;
 
+% Declaring some flags
+handles.FILE_OPENED = false;
+
+
+
 % Update handles structure
 guidata(hObject, handles);
 
@@ -188,9 +193,26 @@ function browseButton_Callback(hObject, eventdata, handles)
 % hObject    handle to browseButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+% Opening Dialog box to chooshe the file from
 [handles.filename,handles.filepath]= uigetfile('*.wav;*.mp3;*.ogg;*.flac;*.au;*.aiff;*.aif;*.aifc;*.m4a;*.mp4');
+
+% Checking if a file is selected
+if handles.filename
+    handles.FILE_OPENED = true;
+end
+
+% audioread function reads the audio file and passes its signal to
+% handles.signal and its sampling frequency into handles.sampling frequency
 [handles.signal,handles.sampling_frequency] = audioread(handles.filename);
+
+% Setting the file name as text into the edit text bar
 set(handles.browseEdit,'String',handles.filename);
+
+% Updating GUI Data
+guidata(hObject,handles);
+
+
 
 % --- Executes on slider movement.
 function slider_1_Callback(hObject, eventdata, handles)
@@ -454,7 +476,6 @@ function image_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to axes3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-
 % Hint: place code in OpeningFcn to populate axes3
 axes(hObject)
 imshow('Design1.png');
