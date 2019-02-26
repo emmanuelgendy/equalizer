@@ -59,6 +59,11 @@ handles.output = hObject;
 handles.FILE_OPENED = false;
 
 
+% Setting some GUI Tweaks
+set(handles.playButton,'Enable','off');
+set(handles.pauseButton,'Enable','off');
+set(handles.resumeButton,'Enable','off');
+set(handles.stopButton,'Enable','off');
 
 % Update handles structure
 guidata(hObject, handles);
@@ -197,9 +202,14 @@ function browseButton_Callback(hObject, eventdata, handles)
 % Opening Dialog box to chooshe the file from
 [handles.filename,handles.filepath]= uigetfile('*.wav;*.mp3;*.ogg;*.flac;*.au;*.aiff;*.aif;*.aifc;*.m4a;*.mp4');
 
+
+
 % Checking if a file is selected
 if handles.filename
+    % Updating my flag
     handles.FILE_OPENED = true;
+    % Changing my GUI accordingly
+    set(handles.playButton,'Enable','on');
 end
 
 % audioread function reads the audio file and passes its signal to
@@ -208,6 +218,9 @@ end
 
 % Setting the file name as text into the edit text bar
 set(handles.browseEdit,'String',handles.filename);
+
+% Initiating an instance from AudioPlayer class
+handles.player = audioplayer( handles.signal, handles.sampling_frequency);
 
 % Updating GUI Data
 guidata(hObject,handles);
@@ -449,6 +462,16 @@ function playButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+% GUI Tweaks
+set(handles.pauseButton,'Enable','on');
+set(handles.stopButton,'Enable','on');
+set(handles.playButton,'Enable','off');
+
+
+% Play the audiofile
+play(handles.player);
+
+
 
 % --- Executes on button press in pauseButton.
 function pauseButton_Callback(hObject, eventdata, handles)
@@ -456,6 +479,12 @@ function pauseButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+% GUI Tweaks
+set(handles.resumeButton,'Enable','on');
+set(handles.pauseButton,'Enable','off');
+
+% Pause
+pause(handles.player);
 
 % --- Executes on button press in resumeButton.
 function resumeButton_Callback(hObject, eventdata, handles)
@@ -463,12 +492,29 @@ function resumeButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+% GUI Tweaks
+set(handles.resumeButton,'Enable','off');
+set(handles.pauseButton,'Enable','on');
+
+% Resume
+resume(handles.player);
+
 
 % --- Executes on button press in stopButton.
 function stopButton_Callback(hObject, eventdata, handles)
 % hObject    handle to stopButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+% GUI Tweaks
+set(handles.stopButton,'Enable','off');
+set(handles.playButton,'Enable','on');
+set(handles.resumeButton,'Enable','off');
+set(handles.pauseButton,'Enable','off');
+
+% Stop and reset the audio file
+stop(handles.player);
+
 
 
 % --- Executes during object creation, after setting all properties.
