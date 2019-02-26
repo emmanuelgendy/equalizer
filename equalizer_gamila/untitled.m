@@ -57,6 +57,7 @@ handles.output = hObject;
 
 % Declaring some flags
 handles.FILE_OPENED = false;
+handles.PLOTTED= false;
 
 
 % Setting some GUI Tweaks
@@ -199,31 +200,33 @@ function browseButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Opening Dialog box to chooshe the file from
+% Opening Dialog box to choose the file from
 [handles.filename,handles.filepath]= uigetfile('*.wav;*.mp3;*.ogg;*.flac;*.au;*.aiff;*.aif;*.aifc;*.m4a;*.mp4');
 
 
 
 % Checking if a file is selected
 if handles.filename
-    % Updating my flag
+    % Updating my flags
     handles.FILE_OPENED = true;
+    handles.PLOTTED = false;
     % Changing my GUI accordingly
     set(handles.playButton,'Enable','on');
     set(handles.pauseButton,'Enable','off');
     set(handles.resumeButton,'Enable','off');
     set(handles.stopButton,'Enable','off');
+    
+    % audioread function reads the audio file and passes its signal to
+    % handles.signal and its sampling frequency into handles.sampling frequency
+    [handles.signal,handles.sampling_frequency] = audioread(handles.filename);
+
+    % Setting the file name as text into the edit text bar
+    set(handles.browseEdit,'String',handles.filename);
+
+    % Initiating an instance from AudioPlayer class
+    handles.player = audioplayer( handles.signal, handles.sampling_frequency);
+else msgbox('Please open an audio file', 'Error', 'Error');
 end
-
-% audioread function reads the audio file and passes its signal to
-% handles.signal and its sampling frequency into handles.sampling frequency
-[handles.signal,handles.sampling_frequency] = audioread(handles.filename);
-
-% Setting the file name as text into the edit text bar
-set(handles.browseEdit,'String',handles.filename);
-
-% Initiating an instance from AudioPlayer class
-handles.player = audioplayer( handles.signal, handles.sampling_frequency);
 
 % Updating GUI Data
 guidata(hObject,handles);
@@ -470,9 +473,20 @@ set(handles.pauseButton,'Enable','on');
 set(handles.stopButton,'Enable','on');
 set(handles.playButton,'Enable','off');
 
-
+if ~handles.PLOTTED
+% Plot the audio signal
+axes(handles.originalAxis);
+plot(handles.signal);
+drawnow limitrate
+handles.PLOTTED = true;
+end
 % Play the audiofile
 play(handles.player);
+
+% Update GUI data
+guidata(hObject,handles);
+
+
 
 
 
