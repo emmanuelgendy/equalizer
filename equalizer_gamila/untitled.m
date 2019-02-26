@@ -22,7 +22,7 @@ function varargout = untitled(varargin)
 
 % Edit the above text to modify the response to help untitled
 
-% Last Modified by GUIDE v2.5 26-Feb-2019 14:15:37
+% Last Modified by GUIDE v2.5 26-Feb-2019 22:17:42
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -74,8 +74,8 @@ varargout{1} = handles.output;
 
 
 % --- Executes on slider movement.
-function slider1_Callback(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
+function slider_10_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_10 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -84,8 +84,8 @@ function slider1_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
+function slider_10_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_10 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -183,16 +183,16 @@ if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColo
 end
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
+% --- Executes on button press in browseButton.
+function browseButton_Callback(hObject, eventdata, handles)
+% hObject    handle to browseButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
 % --- Executes on slider movement.
-function slider15_Callback(hObject, eventdata, handles)
-% hObject    handle to slider15 (see GCBO)
+function slider_1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -201,8 +201,8 @@ function slider15_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider15_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider15 (see GCBO)
+function slider_1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -213,16 +213,16 @@ end
 
 
 % --- If Enable == 'on', executes on mouse press in 5 pixel border.
-% --- Otherwise, executes on mouse press in 5 pixel border or over slider15.
-function slider15_ButtonDownFcn(hObject, eventdata, handles)
-% hObject    handle to slider15 (see GCBO)
+% --- Otherwise, executes on mouse press in 5 pixel border or over slider_1.
+function slider_1_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to slider_1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
 % --- Executes on slider movement.
-function slider14_Callback(hObject, eventdata, handles)
-% hObject    handle to slider14 (see GCBO)
+function slider_2_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -231,8 +231,8 @@ function slider14_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider14_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider14 (see GCBO)
+function slider_2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -243,8 +243,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider13_Callback(hObject, eventdata, handles)
-% hObject    handle to slider13 (see GCBO)
+function slider_3_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -253,8 +253,8 @@ function slider13_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider13_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider13 (see GCBO)
+function slider_3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -265,8 +265,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider12_Callback(hObject, eventdata, handles)
-% hObject    handle to slider12 (see GCBO)
+function slider_4_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -275,8 +275,8 @@ function slider12_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider12_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider12 (see GCBO)
+function slider_4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -287,8 +287,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider11_Callback(hObject, eventdata, handles)
-% hObject    handle to slider11 (see GCBO)
+function slider_5_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -297,8 +297,8 @@ function slider11_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider11_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider11 (see GCBO)
+function slider_5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -309,8 +309,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider10_Callback(hObject, eventdata, handles)
-% hObject    handle to slider10 (see GCBO)
+function slider_6_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_6 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -319,8 +319,8 @@ function slider10_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider10_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider10 (see GCBO)
+function slider_6_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_6 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -331,8 +331,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider9_Callback(hObject, eventdata, handles)
-% hObject    handle to slider9 (see GCBO)
+function slider_7_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -341,8 +341,8 @@ function slider9_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider9_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider9 (see GCBO)
+function slider_7_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -353,8 +353,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider8_Callback(hObject, eventdata, handles)
-% hObject    handle to slider8 (see GCBO)
+function slider_8_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -363,8 +363,8 @@ function slider8_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider8_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider8 (see GCBO)
+function slider_8_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -375,8 +375,8 @@ end
 
 
 % --- Executes on slider movement.
-function slider7_Callback(hObject, eventdata, handles)
-% hObject    handle to slider7 (see GCBO)
+function slider_9_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_9 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -385,8 +385,8 @@ function slider7_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider7_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider7 (see GCBO)
+function slider_9_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_9 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -419,29 +419,29 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton2.
-function pushbutton2_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton2 (see GCBO)
+% --- Executes on button press in playButton.
+function playButton_Callback(hObject, eventdata, handles)
+% hObject    handle to playButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
+% --- Executes on button press in pauseButton.
+function pauseButton_Callback(hObject, eventdata, handles)
+% hObject    handle to pauseButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton4.
-function pushbutton4_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton4 (see GCBO)
+% --- Executes on button press in resumeButton.
+function resumeButton_Callback(hObject, eventdata, handles)
+% hObject    handle to resumeButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton5.
-function pushbutton5_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton5 (see GCBO)
+% --- Executes on button press in stopButton.
+function stopButton_Callback(hObject, eventdata, handles)
+% hObject    handle to stopButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)

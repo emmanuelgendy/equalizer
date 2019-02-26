@@ -1,6 +1,6 @@
 1- sliders range from -10 db to 10 db 
-2- dB static text will be changed to the crossponding value of the slider 
-3-f1 to f10 will be bandwidths
+2- dB static text will be changed to the corresponding value of the slider 
+3- f1 to f10 will be bandwidths
 4- text beside browse will have the file path.
-5-we can change anything font, color, layouts.
+5- we can change anything font, color, layouts.
 
