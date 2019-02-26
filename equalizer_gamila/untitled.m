@@ -188,7 +188,9 @@ function browseButton_Callback(hObject, eventdata, handles)
 % hObject    handle to browseButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+[handles.filename,handles.filepath]= uigetfile('*.wav;*.mp3;*.ogg;*.flac;*.au;*.aiff;*.aif;*.aifc;*.m4a;*.mp4');
+[handles.signal,handles.sampling_frequency] = audioread(handles.filename);
+set(handles.browseEdit,'String',handles.filename);
 
 % --- Executes on slider movement.
 function slider_1_Callback(hObject, eventdata, handles)
