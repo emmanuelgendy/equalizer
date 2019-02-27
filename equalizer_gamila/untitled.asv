@@ -491,9 +491,11 @@ while isplaying(handles.player)
 % Plot the audio signal
 plot(handles.signal(1:handles.progress,1));
 % Setting Axis limits
+set(handles.originalAxis,'YLim',[handles.min(1) handles.max(1)]);
+set(handles.originalAxis,'XLim',[(handles.progress-handles.size/2) (handles.progress+handles.size/2)]);
 drawnow limitrate
 
-handles.progress= handles.progress + 1;
+handles.progress= handles.progress + handles.stepTime;
 end
 
 guidata(hObject,handles);
