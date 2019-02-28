@@ -22,7 +22,7 @@ function varargout = untitled(varargin)
 
 % Edit the above text to modify the response to help untitled
 
-% Last Modified by GUIDE v2.5 26-Feb-2019 22:53:38
+% Last Modified by GUIDE v2.5 28-Feb-2019 04:23:10
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -61,12 +61,17 @@ handles.PLOTTED= false;
 
 % Universal Counter
 handles.progress = 0;
+handles.counter=1;
+
+% Empty handler
+handles.filename=0;
 
 % Setting some GUI Tweaks
 set(handles.playButton,'Enable','off');
 set(handles.pauseButton,'Enable','off');
 set(handles.resumeButton,'Enable','off');
 set(handles.stopButton,'Enable','off');
+set(handles.slider_progress,'Enable','off');
 
 % Update handles structure
 guidata(hObject, handles);
@@ -202,13 +207,20 @@ function browseButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Opening Dialog box to choose the file from
+
+   if handles.FILE_OPENED
+    % Stopping player if a previous song is on
+    stop(handles.player);
+    handles.filename=0;
+    handles.FILE_OPENED= false;
+   end
+    
+   % Opening Dialog box to choose the file from
 [handles.filename,handles.filepath]= uigetfile('*.wav;*.mp3;*.ogg;*.flac;*.au;*.aiff;*.aif;*.aifc;*.m4a;*.mp4');
-
-
 
 % Checking if a file is selected
 if handles.filename
+ 
     % Updating my flags
     handles.FILE_OPENED = true;
     handles.PLOTTED = false;
@@ -238,6 +250,17 @@ if handles.filename
     handles.min=min(handles.signal);
     handles.max=max(handles.signal);
     handles.size=size(handles.signal,1);
+    
+    % Array of steps
+    handles.steps = transpose(0:handles.stepTime:handles.totalTime);
+    
+    % Zeros on_screen matrix
+    handles.on_screen=zeros(handles.size,1);
+    
+    % Setting slider's min and max values
+    set(handles.slider_progress,'Enable','on');
+    set(handles.slider_progress,'Min',0);
+    set(handles.slider_progress,'Max',handles.totalTime);
     
 else msgbox('Please open an audio file', 'Error', 'Error');
 end
@@ -475,27 +498,43 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
+% Plots the audio signal
+function plot_original_base(hObject,handles)
+
+% Setting axis
+axes(handles.originalAxis);
+% Plotting
+plot(handles.steps(:,1),handles.signal(:,1),'Color',[104/255 189/255 208/255]);
+% Setting up the axis
+set(handles.originalAxis,'XColor',[104/255 189/255 208/255]);
+set(handles.originalAxis,'YColor',[104/255 189/255 208/255]);
+xlabel('Seconds');
+ylabel('Normalized Frequency');
+% Updating the Flag
+handles.PLOTTED = true;
+% Update GUI
+guidata(hObject,handles);
+
 % Plays the Vline synced with the progress
 function plot_original(hObject,handles)
 
 % Setting axis
 axes(handles.originalAxis);
 
-% Updating the Flag
-handles.PLOTTED = true;
-
-
-
-
 while isplaying(handles.player)
-% Plot the audio signal
-plot(handles.signal(1:handles.progress,1));
-% Setting Axis limits
-drawnow limitrate
-
-handles.progress= handles.progress + 1;
+    % Setting up the axis
+    set(handles.originalAxis,'YLim',[-1 1]);
+    handles.on_screen(1:handles.progress,1)=handles.signal(1:handles.progress,1);
+    % Plot the audio signal
+    plot(handles.steps,handles.on_screen);
+    set(handles.originalAxis,'XLim',[0 handles.totalTime]);
+    drawnow limitrate;
+    
+    handles.progress= handles.progress + handles.sampling_frequency/2;
+    pause(0.5);
+   
 end
-
+% Update GUI
 guidata(hObject,handles);
 
 
@@ -509,6 +548,7 @@ function playButton_Callback(hObject, eventdata, handles)
 set(handles.pauseButton,'Enable','on');
 set(handles.stopButton,'Enable','on');
 set(handles.playButton,'Enable','off');
+set(handles.browseButton,'Enable','off');
 
 % Reseting Progress
 handles.progress=0;
@@ -517,7 +557,7 @@ handles.progress=0;
 play(handles.player);
 
 if ~handles.PLOTTED
-plot_original(hObject,handles);
+    plot_original_base(hObject,handles);
 end
 
 
@@ -537,9 +577,12 @@ function pauseButton_Callback(hObject, eventdata, handles)
 % GUI Tweaks
 set(handles.resumeButton,'Enable','on');
 set(handles.pauseButton,'Enable','off');
+set(handles.browseButton,'Enable','on');
 
 % Pause
 pause(handles.player);
+% Updating GUI
+guidata(hObject,handles);
 
 % --- Executes on button press in resumeButton.
 function resumeButton_Callback(hObject, eventdata, handles)
@@ -554,13 +597,6 @@ set(handles.pauseButton,'Enable','on');
 % Resume
 resume(handles.player);
 
-% Continue plotting
-while isplaying(handles.player)
-% Plot the audio signal
-plot(handles.signal(1:handles.progress,1));
-drawnow limitrate
-handles.progress= handles.progress+1;
-end
 
 guidata(hObject,handles);
 
@@ -576,6 +612,7 @@ set(handles.stopButton,'Enable','off');
 set(handles.playButton,'Enable','on');
 set(handles.resumeButton,'Enable','off');
 set(handles.pauseButton,'Enable','off');
+set(handles.browseButton,'Enable','on');
 
 % Stop and reset the audio file
 stop(handles.player);
@@ -591,3 +628,35 @@ function image_CreateFcn(hObject, eventdata, handles)
 axes(hObject)
 imshow('Design1.png');
 
+
+
+% --- Executes on slider movement.
+function slider_progress_Callback(hObject, eventdata, handles)
+% hObject    handle to slider_progress (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+% Getting Slider's value
+progress = get(hObject,'Value');
+
+% Current sample
+current= floor(progress*handles.sampling_frequency);
+player= audioplayer(handles.signal(current:handles.size,1),handles.sampling_frequency);
+stop(handles.player);
+stop(player);
+play(player);
+
+
+% --- Executes during object creation, after setting all properties.
+function slider_progress_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider_progress (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
