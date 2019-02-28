@@ -22,7 +22,7 @@ function varargout = untitled(varargin)
 
 % Edit the above text to modify the response to help untitled
 
-% Last Modified by GUIDE v2.5 28-Feb-2019 04:23:10
+% Last Modified by GUIDE v2.5 28-Feb-2019 09:05:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -71,7 +71,7 @@ set(handles.playButton,'Enable','off');
 set(handles.pauseButton,'Enable','off');
 set(handles.resumeButton,'Enable','off');
 set(handles.stopButton,'Enable','off');
-set(handles.slider_progress,'Enable','off');
+
 
 % Update handles structure
 guidata(hObject, handles);
@@ -107,6 +107,9 @@ function slider_10_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -129,6 +132,9 @@ function slider3_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -151,6 +157,9 @@ function slider4_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -172,7 +181,9 @@ function slider5_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to slider5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-
+% Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Min',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -195,6 +206,9 @@ function slider6_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -257,10 +271,8 @@ if handles.filename
     % Zeros on_screen matrix
     handles.on_screen=zeros(handles.size,1);
     
-    % Setting slider's min and max values
-    set(handles.slider_progress,'Enable','on');
-    set(handles.slider_progress,'Min',0);
-    set(handles.slider_progress,'Max',handles.totalTime);
+   
+    
     
 else msgbox('Please open an audio file', 'Error', 'Error');
 end
@@ -280,11 +292,16 @@ function slider_1_Callback(hObject, eventdata, handles)
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 
 
+
+
 % --- Executes during object creation, after setting all properties.
 function slider_1_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to slider_1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -316,6 +333,9 @@ function slider_2_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -382,6 +402,9 @@ function slider_5_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -426,6 +449,9 @@ function slider_7_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -448,6 +474,9 @@ function slider_8_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -470,6 +499,9 @@ function slider_9_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
+ % Sliders Setting
+    set(hObject,'Min',-150);
+    set(hObject,'Max',150);
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -619,44 +651,243 @@ stop(handles.player);
 
 
 
+
+
 % --- Executes during object creation, after setting all properties.
 function image_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes3 (see GCBO)
+% hObject    handle to image (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-% Hint: place code in OpeningFcn to populate axes3
-axes(hObject)
+axes(hObject);
 imshow('Design1.png');
+% Hint: place code in OpeningFcn to populate image
 
 
 
-% --- Executes on slider movement.
-function slider_progress_Callback(hObject, eventdata, handles)
-% hObject    handle to slider_progress (see GCBO)
+function range1_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range1_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'Value') returns position of slider
-%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
-
-% Getting Slider's value
-progress = get(hObject,'Value');
-
-% Current sample
-current= floor(progress*handles.sampling_frequency);
-player= audioplayer(handles.signal(current:handles.size,1),handles.sampling_frequency);
-stop(handles.player);
-stop(player);
-play(player);
+% Hints: get(hObject,'String') returns contents of range1_edit as text
+%        str2double(get(hObject,'String')) returns contents of range1_edit as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function slider_progress_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider_progress (see GCBO)
+function range1_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range1_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range2_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range2_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range2_edit as text
+%        str2double(get(hObject,'String')) returns contents of range2_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range2_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range2_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range3_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range3_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range3_edit as text
+%        str2double(get(hObject,'String')) returns contents of range3_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range3_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range3_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range4_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range4_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range4_edit as text
+%        str2double(get(hObject,'String')) returns contents of range4_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range4_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range4_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range5_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range5_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range5_edit as text
+%        str2double(get(hObject,'String')) returns contents of range5_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range5_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range5_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range6_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range6_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range6_edit as text
+%        str2double(get(hObject,'String')) returns contents of range6_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range6_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range6_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range7_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range7_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range7_edit as text
+%        str2double(get(hObject,'String')) returns contents of range7_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range7_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range7_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range9_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range9_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range9_edit as text
+%        str2double(get(hObject,'String')) returns contents of range9_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range9_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range9_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range8_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range8_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range8_edit as text
+%        str2double(get(hObject,'String')) returns contents of range8_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range8_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range8_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function range10_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to range10_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of range10_edit as text
+%        str2double(get(hObject,'String')) returns contents of range10_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function range10_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to range10_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
 end
